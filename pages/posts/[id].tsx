@@ -108,6 +108,9 @@ const reactMarkdownComponents = {
     h3: ({ ...props }) => (
         <h3 id={generateSlug(props.children[0])} {...props}></h3>
     ),
+    h4: ({ ...props }) => (
+        <h3 id={generateSlug(props.children[0])} {...props}></h3>
+    ),
     a: ({ children, href = null }) => {
         if (href[0] !== '#') {
             return (
