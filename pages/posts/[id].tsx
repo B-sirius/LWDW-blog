@@ -23,7 +23,7 @@ export async function getStaticPaths() {
     return {
         paths: Object.keys(postMap).map(id => ({
             params: { id }
-        })),
+        })),  
         fallback: false
     }
 }
@@ -74,7 +74,7 @@ const Time = styled.div`
 `;
 
 // 生成锚点
-const generateSlug = (string) => {
+const generateSlug = (string: string) => {
     let str = string.replace(/^\s+|\s+$/g, "");
     str = str.toLowerCase();
     str = str
@@ -86,8 +86,8 @@ const generateSlug = (string) => {
 };
 
 const reactMarkdownComponents = {
-    code({ inline, className, children, ...props }) {
-        const match = /language-(\w+)/.exec(className || "");
+    code({ inline = null, className = '', children, ...props }) {
+        const match = /language-(\w+)/.exec(className);
         return !inline && match ? (
             <SyntaxHighlighter
                 language={match[1]}
@@ -108,7 +108,7 @@ const reactMarkdownComponents = {
     h3: ({ ...props }) => (
         <h3 id={generateSlug(props.children[0])} {...props}></h3>
     ),
-    a: ({ children, href }) => {
+    a: ({ children, href = null }) => {
         if (href[0] !== '#') {
             return (
                 <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>
@@ -120,7 +120,14 @@ const reactMarkdownComponents = {
     }
 }
 
-const Post = (props) => {
+type PostType = {
+    mdText: string,
+    date: string,
+    title: string,
+    description: string
+};
+
+const Post = (props: PostType) => {
     const { mdText, date, title, description } = props;
     const [renderedMd, setRenderedMd] = useState(null);
 
