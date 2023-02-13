@@ -55,28 +55,7 @@ function getDescription(md) {
 }
 
 // 映射id于post信息
-// 目前博客不多，采用了一个简单的id生成方式（生成不连续的id）
 async function update() {
-    let postMap = {};
-
-    const getTopId = () => {
-        const keys = Object.keys(postMap);
-        if (!keys.length) {
-            return 0;
-        }
-        return Math.max(...keys.map(key => parseInt(key)))
-    };
-
-    // init postMap from postMap.json
-    try {
-        const rawMap = await fse.readFile('postMap.json');
-        if (rawMap) {
-            postMap = JSON.parse(rawMap);
-        }
-    } catch (e) {
-        // continue regardless of error
-    }
-
     // 遍历_posts目录中的md，获取相关的信息
     const newPostMap = {};
     const postFileNames = (await fse.readdir('./_posts')).filter(name => !!name && name[0] !== '.');

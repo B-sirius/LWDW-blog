@@ -1,5 +1,9 @@
 // 外链
-const InboundLink = ({ className, href, children }) => (
+const InboundLink = ({ className = null, href, children }: {
+    className?: string,
+    href: string,
+    children
+}) => (
     <a
         className={className}
         rel="noopener noreferrer"

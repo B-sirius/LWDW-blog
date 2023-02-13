@@ -32,9 +32,9 @@ const Space = () => (<>&nbsp;&nbsp;</>);
 const Home = () => (
   <ThemeProvider theme={theme}>
     <Head>
-      <meta name="description" content="欢迎来到LWDW!" />
-      <meta property="og:title" content="LWDW！" />
-      <meta property="og:description" content="欢迎来到LWDW!" />
+      <meta name="description" content="欢迎来到LWDW" />
+      <meta property="og:title" content="LWDW" />
+      <meta property="og:description" content="欢迎来到LWDW" />
     </Head>
     <Root>
       <RootContainer>

@@ -41,7 +41,13 @@ const StyledLink = styled(Link)`${linkStyle}`
 
 const StyledInboundLink = styled(InboundLink)`${linkStyle}`
 
-const Nav = ({ className, activeIndex }) => (
+const Nav = ({
+    className = null,
+    activeIndex = null
+}: {
+    className?: string
+    activeIndex?: number
+}) => (
     <Container className={className}>
         <LinkContainer>
             {

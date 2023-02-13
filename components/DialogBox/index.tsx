@@ -1,7 +1,10 @@
 // 对话框盒，仿照了RPG游戏中的对话框样式
 import styled from 'styled-components';
 
-const DialogBox = ({ className, children }) => (
+const DialogBox = ({ className, children }: {
+    className?: string,
+    children
+}) => (
     <div className={className}>
         <div>
             {children}
