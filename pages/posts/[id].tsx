@@ -12,6 +12,7 @@ import Root from 'components/Root';
 import RootContainer from 'components/RootContainer';
 import Nav from 'components/Nav';
 import MarkdownWrapper from 'components/MarkdownWrapper';
+import Comment from 'components/Comment';
 import theme from 'theme';
 import rehypeRaw from 'rehype-raw';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -172,6 +173,7 @@ const Post = (props: PostType) => {
                             </MarkdownWrapper>
                         </MarkdownContainer>
                     </StyledDialogBox>
+                    <Comment />
                 </RootContainer>
             </Root>
         </ThemeProvider>
