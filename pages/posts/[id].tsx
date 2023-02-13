@@ -74,7 +74,7 @@ const Time = styled.div`
 `;
 
 // 生成锚点
-const generateSlug = (string: string) => {
+const generateAnchorPoint = (string: string) => {
     let str = string.replace(/^\s+|\s+$/g, "");
     str = str.toLowerCase();
     str = str
@@ -103,13 +103,13 @@ const reactMarkdownComponents = {
         );
     },
     h2: ({ ...props }) => (
-        <h2 id={generateSlug(props.children[0])} {...props}></h2>
+        <h2 id={generateAnchorPoint(props.children[0])} {...props}></h2>
     ),
     h3: ({ ...props }) => (
-        <h3 id={generateSlug(props.children[0])} {...props}></h3>
+        <h3 id={generateAnchorPoint(props.children[0])} {...props}></h3>
     ),
     h4: ({ ...props }) => (
-        <h3 id={generateSlug(props.children[0])} {...props}></h3>
+        <h3 id={generateAnchorPoint(props.children[0])} {...props}></h3>
     ),
     a: ({ children, href = null }) => {
         if (href[0] !== '#') {
