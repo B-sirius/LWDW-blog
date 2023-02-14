@@ -4,9 +4,16 @@
         <description><![CDATA[LWDW! posts | RSS Feed]]></description>
         <link>https://b-sirius.github.io</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Mon, 06 Feb 2023 13:43:03 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 14 Feb 2023 02:23:35 GMT</lastBuildDate>
         <atom:link href="https://b-sirius.github.io/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Mon, 06 Feb 2023 00:00:00 GMT</pubDate>
+        <pubDate>Tue, 14 Feb 2023 00:00:00 GMT</pubDate>
+        <item>
+            <title><![CDATA[使用Github Actions与CloudFlare Pages优化博客上线流程]]></title>
+            <description><![CDATA[在之前的文章中，我大概介绍了如何搭建一个个人静态博客，但并没有涉及要如何将其上线。......]]></description>
+            <link>https://b-sirius.github.io/posts/use-github-actions-and-cloudflare-pages-improve-blog-online-process</link>
+            <guid isPermaLink="true">https://b-sirius.github.io/posts/use-github-actions-and-cloudflare-pages-improve-blog-online-process</guid>
+            <pubDate>Tue, 14 Feb 2023 00:00:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[PDF生成方案比较]]></title>
             <description><![CDATA[PDF生成是一个常见的需求，目的一般是将动态数据插入到特定格式的PDF模版中。......]]></description>

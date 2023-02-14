@@ -16,7 +16,7 @@ import Comment from 'components/Comment';
 import theme from 'theme';
 import rehypeRaw from 'rehype-raw';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { dark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 const postsDirPath = path.join(process.cwd(), '_posts');
 
@@ -92,7 +92,7 @@ const reactMarkdownComponents = {
         return !inline && match ? (
             <SyntaxHighlighter
                 language={match[1]}
-                style={dark}
+                style={vscDarkPlus}
                 {...props}
             >
                 {String(children).replace(/\n$/, "")}
