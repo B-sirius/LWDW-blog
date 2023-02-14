@@ -40,21 +40,30 @@ const Home = () => (
       <RootContainer>
         <Nav activeIndex={0} />
         <IntroduceContainer>
-          <Introduce>
-            我是周易，欢迎！👋我是一名程序员，目前在中国上海生活工作。
-          </Introduce>
-          <Introduce>
-            I am  Yi Zhou, Welcome! 👋 I currently live in Shanghai, China and work as a Software Developer.
-          </Introduce>
+          <MarkdownWrapper>
+            <Introduce>
+              你好，我是周易，欢迎来到我的博客🌖！我是一名程序员，目前在中国上海工作。
+              <br />
+              同时我也是一位游戏玩家🎮与书影音👩🏻‍🎤爱好者，偶尔活跃在
+              <InboundLink href="https://www.douban.com/people/121516026/">豆瓣社区</InboundLink>
+              。
+            </Introduce>
+            <Introduce>
+              Hi, I am  Yi Zhou, Welcome to my blog🌖! I currently live in Shanghai, China and work as a Software Developer.
+              <br />
+              Meanwhile, I am a video game fan 🎮 and loves books, movies, music 👩🏻‍🎤. You can find me in
+              <InboundLink href="https://www.douban.com/people/121516026/"> Douban </InboundLink>.
+            </Introduce>
+          </MarkdownWrapper>
         </IntroduceContainer>
         <StyledDialogBox>
           <Gallary
-            src="https://s2.loli.net/2023/01/03/aLHyfVWIgjlCbkw.jpg"
+            src="https://s2.loli.net/2023/02/14/WQKHhTE1cxsSZDt.jpg"
             width={0}
             height={0}
             priority
             sizes="900px"
-            alt="浙美意大利雕塑展-静谧的凝视" />
+            alt="路过公交" />
         </StyledDialogBox>
         <FriendLinkContainer>
           <MarkdownWrapper>
