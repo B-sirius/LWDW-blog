@@ -15,7 +15,7 @@ import MarkdownWrapper from 'components/MarkdownWrapper';
 import Comment from 'components/Comment';
 import theme from 'theme';
 import rehypeRaw from 'rehype-raw';
-import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 const postsDirPath = path.join(process.cwd(), '_posts');
