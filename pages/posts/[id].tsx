@@ -1,10 +1,8 @@
-import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import postMap from 'postMap.json';
 import fse from 'fs-extra';
 import matter from 'gray-matter';
 import path from 'path';
-import ReactMarkdown from 'react-markdown';
 import styled, { ThemeProvider } from 'styled-components';
 import StyledDialogBox from 'components/DialogBox';
 import FitDialogBox from 'components/FitDialogBox';
@@ -14,9 +12,29 @@ import Nav from 'components/Nav';
 import MarkdownWrapper from 'components/MarkdownWrapper';
 import Comment from 'components/Comment';
 import theme from 'theme';
-import rehypeRaw from 'rehype-raw';
-import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { remark } from 'remark';
+import remarkHtml from 'remark-html';
+import { rehype } from 'rehype';
+import rehypeSlug from 'rehype-slug';
+import rehypePrism from '@mapbox/rehype-prism';
+import rehypeExternalLinks from 'rehype-external-links';
+import "prism-themes/themes/prism-vsc-dark-plus.min.css";
+
+const markdownToHtml = async (markdown: string) => {
+    const html = await remark()
+        .use(remarkHtml, { sanitize: false })
+        .process(markdown)
+
+    const processedHtml = await rehype()
+        .use(rehypePrism)
+        .use(rehypeSlug)
+        .use(rehypeExternalLinks, {
+            target: '_blank'
+        })
+        .process(html.toString());
+
+    return processedHtml.toString();
+}
 
 const postsDirPath = path.join(process.cwd(), '_posts');
 
@@ -24,7 +42,7 @@ export async function getStaticPaths() {
     return {
         paths: Object.keys(postMap).map(id => ({
             params: { id }
-        })),  
+        })),
         fallback: false
     }
 }
@@ -34,12 +52,13 @@ export async function getStaticProps(context) {
     const { name, title, date, description } = postMap[id];
     const mdData = await fse.readFile(`${postsDirPath}/${name}`);
     const { content: mdText } = matter(mdData);
+    const htmlText = await markdownToHtml(mdText);
     return {
         props: {
             id,
             title,
             date,
-            mdText,
+            htmlText,
             description
         }
     }
@@ -74,77 +93,15 @@ const Time = styled.div`
     font-size: 14px;
 `;
 
-// 生成锚点
-const generateAnchorPoint = (string: string) => {
-    let str = string.replace(/^\s+|\s+$/g, "");
-    str = str.toLowerCase();
-    str = str
-        .replace(/[.|/|?|，|？|。|、|“|”]/g, "")
-        .replace(/\s+/g, "-")
-        .replace(/-+/g, "-");
-
-    return str;
-};
-
-const reactMarkdownComponents = {
-    code({ inline = null, className = '', children, ...props }) {
-        const match = /language-(\w+)/.exec(className);
-        return !inline && match ? (
-            <SyntaxHighlighter
-                language={match[1]}
-                style={vscDarkPlus}
-                {...props}
-            >
-                {String(children).replace(/\n$/, "")}
-            </SyntaxHighlighter>
-        ) : (
-            <code className={className} {...props}>
-                {children}
-            </code>
-        );
-    },
-    h2: ({ ...props }) => (
-        <h2 id={generateAnchorPoint(props.children[0])} {...props}></h2>
-    ),
-    h3: ({ ...props }) => (
-        <h3 id={generateAnchorPoint(props.children[0])} {...props}></h3>
-    ),
-    h4: ({ ...props }) => (
-        <h3 id={generateAnchorPoint(props.children[0])} {...props}></h3>
-    ),
-    a: ({ children, href = null }) => {
-        if (href[0] !== '#') {
-            return (
-                <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>
-            )
-        }
-        return (
-            <a href={href}>{children}</a>
-        )
-    }
-}
-
 type PostType = {
-    mdText: string,
+    htmlText: string,
     date: string,
     title: string,
     description: string
 };
 
 const Post = (props: PostType) => {
-    const { mdText, date, title, description } = props;
-    const [renderedMd, setRenderedMd] = useState(null);
-
-    // ReactMarkdown这部分的渲染一定要在客户端进行，所以我们将其放在useEffect中
-    useEffect(() => {
-        setRenderedMd(
-            <ReactMarkdown
-                rehypePlugins={[rehypeRaw]}
-                components={reactMarkdownComponents}>
-                {mdText}
-            </ReactMarkdown>
-        )
-    }, [mdText]);
+    const { htmlText, date, title, description } = props;
 
     return (
         <ThemeProvider theme={theme}>
@@ -169,7 +126,7 @@ const Post = (props: PostType) => {
                     <StyledDialogBox>
                         <MarkdownContainer>
                             <MarkdownWrapper>
-                                {renderedMd}
+                                <div dangerouslySetInnerHTML={{ __html: htmlText }} />
                             </MarkdownWrapper>
                         </MarkdownContainer>
                     </StyledDialogBox>
