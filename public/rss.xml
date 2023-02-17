@@ -4,12 +4,12 @@
         <description><![CDATA[LWDW! posts | RSS Feed]]></description>
         <link>https://b-sirius.github.io</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Tue, 14 Feb 2023 02:23:35 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 17 Feb 2023 12:42:14 GMT</lastBuildDate>
         <atom:link href="https://b-sirius.github.io/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 14 Feb 2023 00:00:00 GMT</pubDate>
+        <pubDate>Fri, 17 Feb 2023 00:00:00 GMT</pubDate>
         <item>
             <title><![CDATA[使用Github Actions与CloudFlare Pages优化博客上线流程]]></title>
-            <description><![CDATA[在之前的文章中，我大概介绍了如何搭建一个个人静态博客，但并没有涉及要如何将其上线。......]]></description>
+            <description><![CDATA[我个人的首选方案是Github Pages，因为它免费，且域名直观。......]]></description>
             <link>https://b-sirius.github.io/posts/use-github-actions-and-cloudflare-pages-improve-blog-online-process</link>
             <guid isPermaLink="true">https://b-sirius.github.io/posts/use-github-actions-and-cloudflare-pages-improve-blog-online-process</guid>
             <pubDate>Tue, 14 Feb 2023 00:00:00 GMT</pubDate>

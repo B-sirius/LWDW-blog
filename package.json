@@ -9,7 +9,7 @@
     "lint": "next lint",
     "updateMap": "node server/updateMap.js && node server/generateRSSFeed.js",
     "forceUpdateMap": "rm -f postMap.json && yarn updateMap",
-    "export": "yarn updateMap && next build && next export -o docs/ && touch ./docs/.nojekyll",
+    "export": "yarn updateMap && next build && next export -o docs/ && touch ./docs/.nojekyll && node server/generateBlogGist.js",
     "startDoc": "http-server ./docs",
     "analyze": "ANALYZE=true yarn build"
   },
