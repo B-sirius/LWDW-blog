@@ -45,5 +45,6 @@ jobs:
           token: ${{ secrets.GIST_TOKEN }}
           gist_id: ${{ vars.GIST_ID }}
           file_path: docs/gist.txt
+          gist_file_name: '📝 My Recent Blogs'
 
       
