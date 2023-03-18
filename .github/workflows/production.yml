@@ -38,13 +38,4 @@ jobs:
           destination-github-username: 'B-sirius'
           destination-repository-name: 'b-sirius.github.io'
           target-branch: main
-
-      - name: Update blog gist
-        uses: exuanbo/actions-deploy-gist@v1
-        with:
-          token: ${{ secrets.GIST_TOKEN }}
-          gist_id: ${{ vars.GIST_ID }}
-          file_path: docs/gist.txt
-          gist_file_name: '📝 My Recent Blogs'
-
       
