@@ -10,33 +10,41 @@ const MarkdownWrapper = styled.div`
 
     & {
         h2 {
-            font-size: 1.8em;
+            font-size: 30px;
             margin-top: 50px;
             margin-bottom: 0;
             text-shadow: var(--md-title-shadow);
             color: var(--md-title-color);
         }
         h3 {
-            font-size: 1.4em;
+            font-size: 26px;
             margin-bottom: 0;
             color: var(--md-sub-title-color);
         }
         h4,h5,h6 {
-            font-size: 1.2em;
+            font-size: 24px;
             color: var(--md-sub-title-color);
         }
         p {
-            font-size: 18px;
-            line-height: 2;
+            font-size: 22px;
+            line-height: 1.5;
         }
         a {
             color: var(--md-link-color);
+            font-size: 22px;
         }
         img {
             width: 100%;
         }
         hr {
             border-color: #111;
+        }
+        li {
+            font-size: 22px;
+        }
+
+        code {
+            font-size: 16.5px;
         }
 
         @media only screen 
