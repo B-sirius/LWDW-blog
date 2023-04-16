@@ -31,6 +31,7 @@ const DialogLink = ({ className, title, href, children }) => (
 )
 
 const StyledDialogLink = styled(DialogLink)`
+    font-size: 16.5px;
     flex-direction: column;
 `
 
