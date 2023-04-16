@@ -49,9 +49,11 @@ const MarkdownWrapper = styled.div`
 
         @media only screen 
             and (max-width: 500px) {
-                p {
-                    font-size: 16px;
-                    line-height: 1.5;
+                p, li, a {
+                    font-size: 20px;
+                }
+                code {
+                    font-size: 14px;
                 }
             }
     }
