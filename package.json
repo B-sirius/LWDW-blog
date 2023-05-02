@@ -3,7 +3,7 @@
     "version": "0.1.1",
     "private": true,
     "scripts": {
-        "dev": "next dev",
+        "dev": "yarn updateMap && next dev",
         "build": "next build",
         "lint": "next lint",
         "updateMap": "node server/updateMap.js && node server/generateRSSFeed.js",
