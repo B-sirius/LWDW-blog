@@ -25,13 +25,15 @@ const MarkdownWrapper = styled.div`
             font-size: 24px;
             color: var(--md-sub-title-color);
         }
-        p {
-            font-size: 22px;
-            line-height: 1.5;
+        p, li {
+            margin-bottom: 2em;
+        }
+        p, li, a {
+            font-size: 18px;
+            line-height: 32px;
         }
         a {
             color: var(--md-link-color);
-            font-size: 22px;
         }
         img {
             width: 100%;
@@ -39,18 +41,34 @@ const MarkdownWrapper = styled.div`
         hr {
             border-color: #111;
         }
-        li {
-            font-size: 22px;
+        blockquote {
+            border-left: 5px solid rgb(52, 57, 59);
+            background-color: rgb(54, 0, 0);
+            margin: 0;
+            padding: 1em 1.5em 1em 2em;
+            p, li {
+                margin: 0;
+            }
         }
 
         code {
             font-size: 16.5px;
+            background-color: rgba(115, 125, 140, 0.17);
+            padding: 4.5px 6px;
+            border-radius: 3px;
+        }
+
+        pre code {
+            background-color: transparent;
+            padding: 0;
+            border-radius: none;
         }
 
         @media only screen 
             and (max-width: 500px) {
                 p, li, a {
-                    font-size: 20px;
+                    font-size: 16px;
+                    line-height: 30px;
                 }
                 code {
                     font-size: 14px;
