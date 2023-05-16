@@ -1,7 +1,16 @@
 import postMap from 'postMap.json';
 import dayjs from 'dayjs';
 
-export default function getSortedPosts() {
+type Post = {
+    id: string;
+    name: string;
+    title: string;
+    date: string;
+    draft: boolean;
+    description: string;
+};
+
+export default function getSortedPosts(): Post[] {
     // 按时间排序好的博客内容
     const sortedPosts = Object
         .values(postMap)
