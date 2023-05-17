@@ -68,17 +68,23 @@ async function update() {
     for (const { name, path } of mdPathList) {
         const mdData = await fse.readFile(path);
         const { data: mdInfo, content } = matter(mdData);
-        const { title, date, draft = false, slug } = mdInfo;
+        const { title, date, draft = false, slug, description } = mdInfo;
 
-        if (!draft) {
-            newPostMap[slug] = {
-                id: slug,
-                name,
-                title,
-                date: dayjs(date).format('YYYY-MM-DD'),
-                draft,
-                description: getDescription(content),
-            }
+        if (draft) {
+            continue;
+        }
+        if (!title || !date || !slug) {
+            console.warn(`${name} is missing info!`);
+            continue;
+        }
+
+        newPostMap[slug] = {
+            id: slug,
+            name,
+            title,
+            date: dayjs(date).format('YYYY-MM-DD'),
+            draft,
+            description: description || getDescription(content),
         }
     }
 
