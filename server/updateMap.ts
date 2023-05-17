@@ -1,12 +1,13 @@
 // 根据_posts目录生成postMap.json
-const matter = require('gray-matter');
-const fse = require('fs-extra');
-const path = require('path');
-const dayjs = require('dayjs');
+import matter from "gray-matter";
+import fse from 'fs-extra';
+import path from 'path';
+import dayjs from 'dayjs';
+import { PostMap } from './type'
 
 // md是markdown的原始内容，为了能够正确相对正确的展示，我希望获得第一段纯文本内容作为描述，不要标题、列表之类的
 // https://stackoverflow.com/a/69656654
-function getDescription(md) {
+function getDescription(md: string) {
     const regex = {
         title: /^#\s+.+/,
         heading: /^#+\s+.+/,
@@ -21,16 +22,16 @@ function getDescription(md) {
         codeBlock: /`{3}\w+.*/,
     };
 
-    const isTitle = (str) => regex.title.test(str);
-    const isHeading = (str) => regex.heading.test(str);
-    const isCustom = (str) => regex.custom.test(str);
-    const isOl = (str) => regex.ol.test(str);
-    const isUl = (str) => regex.ul.test(str);
-    const isTask = (str) => regex.task.test(str);
-    const isBlockQuote = (str) => regex.blockQuote.test(str);
-    const isImage = (str) => regex.image.test(str);
-    const isUrl = (str) => regex.url.test(str);
-    const isCodeBlock = (str) => regex.codeBlock.test(str);
+    const isTitle = (str: string) => regex.title.test(str);
+    const isHeading = (str: string) => regex.heading.test(str);
+    const isCustom = (str: string) => regex.custom.test(str);
+    const isOl = (str: string) => regex.ol.test(str);
+    const isUl = (str: string) => regex.ul.test(str);
+    const isTask = (str: string) => regex.task.test(str);
+    const isBlockQuote = (str: string) => regex.blockQuote.test(str);
+    const isImage = (str: string) => regex.image.test(str);
+    const isUrl = (str: string) => regex.url.test(str);
+    const isCodeBlock = (str: string) => regex.codeBlock.test(str);
 
     if (!md) return "";
     const tokens = md.split("\n").filter(item => !!item);
@@ -57,7 +58,7 @@ function getDescription(md) {
 // 映射id于post信息
 async function update() {
     // 遍历_posts目录中的md，获取相关的信息
-    const newPostMap = {};
+    const newPostMap: PostMap = {};
     const postFileNames = (await fse.readdir('./_posts')).filter(name => !!name && name[0] !== '.');
     const mdPathList = postFileNames.map((name) => ({
         name,
@@ -76,7 +77,7 @@ async function update() {
                 title,
                 date: dayjs(date).format('YYYY-MM-DD'),
                 draft,
-                description: getDescription(content)
+                description: getDescription(content),
             }
         }
     }
