@@ -36,7 +36,7 @@ const MarkdownWrapper = styled.div`
             color: var(--md-link-color);
         }
         img {
-            width: 100%;
+            max-width: 100%;
         }
         hr {
             border-color: #111;
