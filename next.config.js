@@ -1,23 +1,24 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "standalone",
   reactStrictMode: true,
   swcMinify: true,
   compiler: {
-    styledComponents: true
+    styledComponents: true,
   },
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 's2.loli.net'
-      }
+        protocol: "https",
+        hostname: "s2.loli.net",
+      },
     ],
-    unoptimized: true
-  }
-}
+    unoptimized: true,
+  },
+};
 
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-})
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
+});
 
-module.exports = withBundleAnalyzer(nextConfig)
+module.exports = withBundleAnalyzer(nextConfig);
