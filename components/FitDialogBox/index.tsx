@@ -8,6 +8,6 @@ const FitDialogBox = styled(StyledDialogBox)`
     & > div {
         width: fit-content;
     }
-`
+`;
 
 export default FitDialogBox;

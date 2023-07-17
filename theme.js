@@ -12,7 +12,7 @@ const theme = {
     mdLinkColor: '#e64f4f',
     mdTitleShadow: '1px 1px 2px #ad0909, 0 0 1em #7b3f0c, 0 0 0.2em #d2ff8f',
     mdTitleColor: '#f2f2f2',
-    mdSubTitleColor: '#d3dae1'
-}
+    mdSubTitleColor: '#d3dae1',
+};
 
 export default theme;

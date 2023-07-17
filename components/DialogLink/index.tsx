@@ -14,25 +14,15 @@ const DialogTitle = styled(FitDialogBox)`
 const DialogLink = ({ className, title, href, children }) => (
     <div className={className}>
         <DialogTitle>
-            {
-                href
-                    ? (
-                        <Link href={href}>
-                            {title}
-                        </Link>
-                    )
-                    : (title)
-            }
+            {href ? <Link href={href}>{title}</Link> : title}
         </DialogTitle>
-        <StyledDialogBox>
-            {children}
-        </StyledDialogBox>
+        <StyledDialogBox>{children}</StyledDialogBox>
     </div>
-)
+);
 
 const StyledDialogLink = styled(DialogLink)`
     font-size: 16.5px;
     flex-direction: column;
-`
+`;
 
 export default StyledDialogLink;

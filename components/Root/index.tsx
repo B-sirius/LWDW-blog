@@ -13,12 +13,8 @@ const RootWrapper = styled.div`
 
     background-color: var(--root-bg-color);
     overflow: scroll;
-    font-family: "GillSans", "Helvetica Neue", Arial, Helvetica, sans-serif;
-`
-const Root = ({ children }) => (
-    <RootWrapper>
-        {children}
-    </RootWrapper>
-)
+    font-family: 'GillSans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+`;
+const Root = ({ children }) => <RootWrapper>{children}</RootWrapper>;
 
 export default Root;

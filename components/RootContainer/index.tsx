@@ -7,13 +7,11 @@ const ContainerWrapper = styled.div`
     overflow: hidden;
     padding: 40px 20px;
     min-height: 100vh;
-    color: var(--font-color)
-`
+    color: var(--font-color);
+`;
 
 const Container = ({ children }) => (
-    <ContainerWrapper>
-        {children}
-    </ContainerWrapper>
-)
+    <ContainerWrapper>{children}</ContainerWrapper>
+);
 
 export default Container;

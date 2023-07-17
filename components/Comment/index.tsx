@@ -1,16 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, createRef } from "react"
+import { useEffect, createRef } from 'react';
 import styled from 'styled-components';
 
 const CommentWrapper = styled.div`
     margin-top: 50px;
-`
+`;
 
 const Comment = () => {
     const commentBox = createRef<HTMLDivElement>();
-    
+
     useEffect(() => {
-        if(commentBox.current.querySelector('script')) {
+        if (commentBox.current.querySelector('script')) {
             return;
         }
         const scriptEl = document.createElement('script');
@@ -33,7 +33,7 @@ const Comment = () => {
         <CommentWrapper>
             <div ref={commentBox} />
         </CommentWrapper>
-    )
-}
+    );
+};
 
 export default Comment;

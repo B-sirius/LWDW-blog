@@ -1,5 +1,5 @@
 // 定制markdown渲染样式
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const MarkdownWrapper = styled.div`
     --md-link-color: ${({ theme }) => theme.mdLinkColor};
@@ -21,14 +21,19 @@ const MarkdownWrapper = styled.div`
             margin-bottom: 0;
             color: var(--md-sub-title-color);
         }
-        h4,h5,h6 {
+        h4,
+        h5,
+        h6 {
             font-size: 24px;
             color: var(--md-sub-title-color);
         }
-        p, li {
+        p,
+        li {
             margin-bottom: 2em;
         }
-        p, li, a {
+        p,
+        li,
+        a {
             font-size: 18px;
             line-height: 32px;
         }
@@ -46,7 +51,8 @@ const MarkdownWrapper = styled.div`
             background-color: rgb(54, 0, 0);
             margin: 0;
             padding: 1em 1.5em 1em 2em;
-            p, li {
+            p,
+            li {
                 margin: 0;
             }
         }
@@ -64,16 +70,17 @@ const MarkdownWrapper = styled.div`
             border-radius: none;
         }
 
-        @media only screen 
-            and (max-width: 500px) {
-                p, li, a {
-                    font-size: 16px;
-                    line-height: 30px;
-                }
-                code {
-                    font-size: 14px;
-                }
+        @media only screen and (max-width: 500px) {
+            p,
+            li,
+            a {
+                font-size: 16px;
+                line-height: 30px;
             }
+            code {
+                font-size: 14px;
+            }
+        }
     }
 `;
 

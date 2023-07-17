@@ -18,33 +18,33 @@ import { rehype } from 'rehype';
 import rehypeSlug from 'rehype-slug';
 import rehypePrism from '@mapbox/rehype-prism';
 import rehypeExternalLinks from 'rehype-external-links';
-import "prism-themes/themes/prism-vsc-dark-plus.min.css";
+import 'prism-themes/themes/prism-vsc-dark-plus.min.css';
 
 const markdownToHtml = async (markdown: string) => {
     const html = await remark()
         .use(remarkHtml, { sanitize: false })
-        .process(markdown)
+        .process(markdown);
 
     const processedHtml = await rehype()
         .use(rehypePrism)
         .use(rehypeSlug)
         .use(rehypeExternalLinks, {
-            target: '_blank'
+            target: '_blank',
         })
         .process(html.toString());
 
     return processedHtml.toString();
-}
+};
 
 const postsDirPath = path.join(process.cwd(), '_posts');
 
 export async function getStaticPaths() {
     return {
-        paths: Object.keys(postMap).map(id => ({
-            params: { id }
+        paths: Object.keys(postMap).map((id) => ({
+            params: { id },
         })),
-        fallback: false
-    }
+        fallback: false,
+    };
 }
 
 export async function getStaticProps(context) {
@@ -59,28 +59,26 @@ export async function getStaticProps(context) {
             title,
             date,
             htmlText,
-            description
-        }
-    }
+            description,
+        },
+    };
 }
 
 const TitleContainer = styled.div`
     padding: 0px 20px 10px;
-    
-    @media only screen 
-            and (max-width: 500px) {
-                padding: 0 5px 10px;
-            }
+
+    @media only screen and (max-width: 500px) {
+        padding: 0 5px 10px;
+    }
 `;
 
 const MarkdownContainer = styled.div`
     padding: 20px 20px;
 
-    @media only screen 
-        and (max-width: 500px) {
-            padding: 5px 5px;
-        }
-`
+    @media only screen and (max-width: 500px) {
+        padding: 5px 5px;
+    }
+`;
 
 const Title = styled.div`
     font-size: 40px;
@@ -94,10 +92,10 @@ const Time = styled.div`
 `;
 
 type PostType = {
-    htmlText: string,
-    date: string,
-    title: string,
-    description: string
+    htmlText: string;
+    date: string;
+    title: string;
+    description: string;
 };
 
 const Post = (props: PostType) => {
@@ -115,18 +113,18 @@ const Post = (props: PostType) => {
                     <Nav />
                     <FitDialogBox>
                         <TitleContainer>
-                            <Title>
-                                {title}
-                            </Title>
-                            <Time>
-                                Posted on {date}
-                            </Time>
+                            <Title>{title}</Title>
+                            <Time>Posted on {date}</Time>
                         </TitleContainer>
                     </FitDialogBox>
                     <StyledDialogBox>
                         <MarkdownContainer>
                             <MarkdownWrapper>
-                                <div dangerouslySetInnerHTML={{ __html: htmlText }} />
+                                <div
+                                    dangerouslySetInnerHTML={{
+                                        __html: htmlText,
+                                    }}
+                                />
                             </MarkdownWrapper>
                         </MarkdownContainer>
                     </StyledDialogBox>
@@ -134,7 +132,7 @@ const Post = (props: PostType) => {
                 </RootContainer>
             </Root>
         </ThemeProvider>
-    )
-}
+    );
+};
 
 export default Post;
