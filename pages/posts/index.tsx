@@ -7,7 +7,7 @@ import RootContainer from 'components/RootContainer';
 import DialogLink from 'components/DialogLink';
 import Nav from 'components/Nav';
 import getSortedPosts from 'utils/getSortedPosts';
-import theme from 'theme';
+import theme from 'styles/theme';
 
 const sortedPosts = getSortedPosts();
 
@@ -18,7 +18,7 @@ const HomeSection = styled(DialogLink)`
     &:last-child {
         margin-bottom: 0;
     }
-`
+`;
 
 // 列表
 const PostList = () => (
@@ -34,15 +34,19 @@ const PostList = () => (
                 {sortedPosts.map((post) => {
                     const { date, title, id, description } = post;
                     return (
-                        <HomeSection title={title} key={id} href={`/posts/${id}`}>
+                        <HomeSection
+                            title={title}
+                            key={id}
+                            href={`/posts/${id}`}
+                        >
                             <p>[{date}]</p>
                             <p>{description}</p>
                         </HomeSection>
-                    )
+                    );
                 })}
             </RootContainer>
         </Root>
     </ThemeProvider>
-)
+);
 
 export default PostList;

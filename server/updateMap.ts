@@ -1,9 +1,9 @@
 // 根据_posts目录生成postMap.json
-import matter from "gray-matter";
+import matter from 'gray-matter';
 import fse from 'fs-extra';
 import path from 'path';
 import dayjs from 'dayjs';
-import { PostMap } from './type'
+import { PostMap } from './type';
 
 // md是markdown的原始内容，为了能够正确相对正确的展示，我希望获得第一段纯文本内容作为描述，不要标题、列表之类的
 // https://stackoverflow.com/a/69656654
@@ -33,8 +33,8 @@ function getDescription(md: string) {
     const isUrl = (str: string) => regex.url.test(str);
     const isCodeBlock = (str: string) => regex.codeBlock.test(str);
 
-    if (!md) return "";
-    const tokens = md.split("\n").filter(item => !!item);
+    if (!md) return '';
+    const tokens = md.split('\n').filter((item) => !!item);
     for (let i = 0; i < tokens.length; i++) {
         if (
             isTitle(tokens[i]) ||
@@ -52,18 +52,20 @@ function getDescription(md: string) {
 
         return `${tokens[i].slice(0, 100)}......`;
     }
-    return ""
+    return '';
 }
 
 // 映射id于post信息
 async function update() {
     // 遍历_posts目录中的md，获取相关的信息
     const newPostMap: PostMap = {};
-    const postFileNames = (await fse.readdir('./_posts')).filter(name => !!name && name[0] !== '.');
+    const postFileNames = (await fse.readdir('./_posts')).filter(
+        (name) => !!name && name[0] !== '.'
+    );
     const mdPathList = postFileNames.map((name) => ({
         name,
-        path: path.join(process.cwd(), '_posts', name)
-    }))
+        path: path.join(process.cwd(), '_posts', name),
+    }));
 
     for (const { name, path } of mdPathList) {
         const mdData = await fse.readFile(path);
@@ -85,7 +87,7 @@ async function update() {
             date: dayjs(date).format('YYYY-MM-DD'),
             draft,
             description: description || getDescription(content),
-        }
+        };
     }
 
     await fse.writeFile('postMap.json', JSON.stringify(newPostMap));

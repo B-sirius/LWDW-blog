@@ -8,5 +8,5 @@ export default function Custom404() {
                 <Link href="/">返回主页</Link>
             </div>
         </div>
-    )
+    );
 }
