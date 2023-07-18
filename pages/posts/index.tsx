@@ -7,7 +7,7 @@ import RootContainer from 'components/RootContainer';
 import DialogLink from 'components/DialogLink';
 import Nav from 'components/Nav';
 import getSortedPosts from 'utils/getSortedPosts';
-import theme from 'theme';
+import theme from 'styles/theme';
 
 const sortedPosts = getSortedPosts();
 

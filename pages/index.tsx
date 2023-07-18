@@ -8,7 +8,7 @@ import StyledDialogBox from 'components/DialogBox';
 import Nav from 'components/Nav';
 import MarkdownWrapper from 'components/MarkdownWrapper';
 import InboundLink from 'components/InboundLink';
-import theme from 'theme';
+import theme from 'styles/theme';
 
 const Introduce = styled.p`
     font-size: 20px;
