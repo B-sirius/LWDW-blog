@@ -27,6 +27,7 @@ export default function Document() {
                     href="/favicon/safari-pinned-tab.svg"
                     color="#ffffff"
                 />
+                <meta name="color-scheme" content="dark light" />
                 <meta name="msapplication-TileColor" content="#ffffff" />
                 <meta name="theme-color" content="#000" />
                 <meta property="og:type" content="website" />
