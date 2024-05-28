@@ -29,7 +29,7 @@ const MarkdownWrapper = styled.div`
         }
         p,
         li {
-            margin-bottom: 2em;
+            /* margin-bottom: 2em; */
         }
         p,
         li,
