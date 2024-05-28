@@ -27,8 +27,7 @@ const MarkdownWrapper = styled.div`
             font-size: 24px;
             color: var(--md-sub-title-color);
         }
-        p,
-        li {
+        p {
             margin-bottom: 2em;
         }
         p,
